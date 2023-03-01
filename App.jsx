@@ -67,25 +67,19 @@ function App(){
 
   return (
     <SafeAreaView style={backgroundStyle}>
-
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
+        backgroundColor={backgroundStyle.backgroundColor}/>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
+
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.jsx</Text>
-            Hoppy Baby3
-          </Section>
-          <Section title="See Your Changes">
-          <View style={styles.container}>
+        <Section title="Hoppers">
+        <View style={styles.container}>
         <MapView
           style={styles.mapStyle}
           initialRegion={{
@@ -109,15 +103,8 @@ function App(){
           />
         </MapView>
       </View>
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
+      </Section>
+      </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -211,10 +198,10 @@ const mapStyle = [
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    top: 40,
+    top: 0,
     left: 40,
-    width: 300, 
-    height: 300,
+    width: 400, 
+    height: 720,
     //right: 0,
     //bottom: 0,
     alignItems: 'center',
@@ -222,10 +209,10 @@ const styles = StyleSheet.create({
   },
   mapStyle: {
     position: 'absolute',
-    top: 40,
-    left: 40,
-    width: 300, 
-    height: 300,
+    top: 0,
+    left: 0,
+    width: 400, 
+    height: 720,
     //right: 0,
     //bottom: 0,
   },
