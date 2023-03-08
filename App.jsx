@@ -108,7 +108,7 @@ makeMaker = () => {
 }
 export default App;
 
-mar = () =>{ return (<Marker
+mar = () =>{ return ([<Marker
 draggable
 coordinate={{
   latitude: 37.78825,
@@ -116,27 +116,27 @@ coordinate={{
 }}            
 title={'Test Marker1'}
 description={'This is a description of the marker'}
-/>)
+/>, 
+<Marker
+draggable
+coordinate={{
+  latitude: 35.78825,
+  longitude: -122.4324,
+}}            
+title={'Test Marker2'}
+description={'This is a description of the marker'}
+/>,
+<Marker
+draggable
+coordinate={{
+  latitude: 36.78825,
+  longitude: -122.4324,
+}}            
+title={'Test Marker3'}
+description={'This is a description of the marker'}
+/>])
 }
-coords = {
-  arry: [
-    {
-      name:'1',
-      latitude: 37.78825,
-      longitude: -122.4324,
-    },
-    {
-      name:'2',
-      latitude: 35.78825,
-      longitude: -122.4324,
-    },
-    {
-      name:'3',
-      latitude: 38.78825,
-      longitude: -122.4324,
-    }
-  ]
-}
+
 
 
 const mapStyle = [
