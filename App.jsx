@@ -89,15 +89,7 @@ function App(){
             longitudeDelta: 0.0421,
           }}
           customMapStyle={mapStyle}>
-         <Marker
-            draggable
-            coordinate={{
-              latitude: 37.78825,
-              longitude: -122.4324,
-            }}            
-            title={'Test Marker1'}
-            description={'This is a description of the marker'}
-          />
+          {this.mar()}
         </MapView>
       </View>
       </Section>
@@ -116,7 +108,16 @@ makeMaker = () => {
 }
 export default App;
 
-
+mar = () =>{ return (<Marker
+draggable
+coordinate={{
+  latitude: 37.78825,
+  longitude: -122.4324,
+}}            
+title={'Test Marker1'}
+description={'This is a description of the marker'}
+/>)
+}
 coords = {
   arry: [
     {
