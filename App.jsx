@@ -27,6 +27,11 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import Services from './Service/Service';
+
+
+let Ser = Services;
+console.log(Ser);
 let SectionProps  = {"title":""};
 //let SectionProps = PropsWithChildren<{
 //  "title": string
