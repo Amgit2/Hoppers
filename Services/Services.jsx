@@ -10,7 +10,11 @@ import {
   View,
 } from 'react-native';
 
-const Services = {
-    
+class Services extends Component {
+  getHello = () => {
+    return('Hello');
+  }
 }
+
+export default Services;
 

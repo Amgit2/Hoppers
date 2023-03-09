@@ -27,6 +27,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import Services from 'Services\Services.jsx'
+
 let SectionProps  = {"title":""};
 //let SectionProps = PropsWithChildren<{
 //  "title": string
@@ -99,13 +101,7 @@ function App(){
   );
 }
 
-makeMaker = () => {
-  console.log("HI HERE");
-  return (<Marker coordinate={{
-    latitude: 37.78825,
-    longitude: -122.4324,
-  }}></Marker>)
-}
+
 export default App;
 
 mar = () =>{ return ([<Marker
