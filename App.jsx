@@ -108,46 +108,21 @@ export default App;
 makeMarker = () =>{ 
 let arrayMarker = [];
 let s = new Services; 
-console.log(s.getBars()); 
-for (let i = 0; i<this.ArrayOfLocations.LocationJson.length; i++){
 
+let ArrayOfLocations = (s.getArrayOfLocations());
+for (let i = 0; i<ArrayOfLocations.length; i++){
+console.log(ArrayOfLocations.length);
  arrayMarker.push(<Marker
   draggable
   coordinate={{
-    latitude: this.ArrayOfLocations.LocationJson[i].latitude,
-    longitude: this.ArrayOfLocations.LocationJson[i].longitude,
+    latitude: ArrayOfLocations[i].latitude,
+    longitude: ArrayOfLocations[i].longitude,
   }}            
-  title={this.ArrayOfLocations.LocationJson[i].name}
-  description={this.ArrayOfLocations.LocationJson[i].description}
+  title={ArrayOfLocations[i].name}
+  description={ArrayOfLocations[i].description}
   />);
 }  
-
-console.log(arrayMarker);
 return (arrayMarker);
-}
-
-
-ArrayOfLocations = {
-  LocationJson: [
-    {
-      name:'1-1-1',
-      latitude: 33,
-      longitude: -122.4324,
-      description: 'This is a description of the marker'
-    },
-    {
-      name:'2-2',
-      latitude: 35.78825,
-      longitude: -122.4324,
-      description: 'This is a description of the marker'
-    },
-    {
-      name:'3-1',
-      latitude: 38.78825,
-      longitude: -122.4324,
-      description: 'This is a description of the marker'
-    }
-  ]
 }
 
 const mapStyle = [
