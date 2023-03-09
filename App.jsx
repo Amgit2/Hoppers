@@ -30,8 +30,7 @@ import {
 import Services from './Service/Service';
 
 
-let Ser = Services;
-console.log(Ser);
+
 let SectionProps  = {"title":""};
 //let SectionProps = PropsWithChildren<{
 //  "title": string
@@ -104,17 +103,12 @@ function App(){
   );
 }
 
-makeMaker = () => {
-  console.log("HI HERE");
-  return (<Marker coordinate={{
-    latitude: 37.78825,
-    longitude: -122.4324,
-  }}></Marker>)
-}
 export default App;
 
 makeMarker = () =>{ 
-let arrayMarker = [];  
+let arrayMarker = [];
+let s = new Services; 
+console.log(s.getBars()); 
 for (let i = 0; i<this.ArrayOfLocations.LocationJson.length; i++){
 
  arrayMarker.push(<Marker
