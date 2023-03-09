@@ -89,7 +89,7 @@ function App(){
             longitudeDelta: 0.0421,
           }}
           customMapStyle={mapStyle}>
-          {this.mar()}
+          {this.makeMarker()}
         </MapView>
       </View>
       </Section>
@@ -108,18 +108,18 @@ makeMaker = () => {
 }
 export default App;
 
-mar = () =>{ 
+makeMarker = () =>{ 
 let arrayMarker = [];  
-for (let i = 0; i<this.coords.arry.length; i++){
+for (let i = 0; i<this.ArrayOfLocations.LocationJson.length; i++){
 
  arrayMarker.push(<Marker
   draggable
   coordinate={{
-    latitude: this.coords.arry[i].latitude,
-    longitude: this.coords.arry[i].longitude,
+    latitude: this.ArrayOfLocations.LocationJson[i].latitude,
+    longitude: this.ArrayOfLocations.LocationJson[i].longitude,
   }}            
-  title={this.coords.arry[i].name}
-  description={this.coords.arry[i].description}
+  title={this.ArrayOfLocations.LocationJson[i].name}
+  description={this.ArrayOfLocations.LocationJson[i].description}
   />);
 }  
 
@@ -128,8 +128,8 @@ return (arrayMarker);
 }
 
 
-coords = {
-  arry: [
+ArrayOfLocations = {
+  LocationJson: [
     {
       name:'1-1-1',
       latitude: 33,
