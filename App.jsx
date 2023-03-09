@@ -89,18 +89,7 @@ function App(){
             longitudeDelta: 0.0421,
           }}
           customMapStyle={mapStyle}>
-          <Marker
-            draggable
-            coordinate={{
-              latitude: 37.78825,
-              longitude: -122.4324,
-            }}
-            onDragEnd={
-              (e) => alert(JSON.stringify(e.nativeEvent.coordinate))
-            }
-            title={'Test Marker'}
-            description={'This is a description of the marker'}
-          />
+          {this.mar()}
         </MapView>
       </View>
       </Section>
@@ -110,7 +99,44 @@ function App(){
   );
 }
 
+makeMaker = () => {
+  console.log("HI HERE");
+  return (<Marker coordinate={{
+    latitude: 37.78825,
+    longitude: -122.4324,
+  }}></Marker>)
+}
 export default App;
+
+mar = () =>{ return ([<Marker
+draggable
+coordinate={{
+  latitude: 37.78825,
+  longitude: -122.4324,
+}}            
+title={'Test Marker1'}
+description={'This is a description of the marker'}
+/>, 
+<Marker
+draggable
+coordinate={{
+  latitude: 35.78825,
+  longitude: -122.4324,
+}}            
+title={'Test Marker2'}
+description={'This is a description of the marker'}
+/>,
+<Marker
+draggable
+coordinate={{
+  latitude: 36.78825,
+  longitude: -122.4324,
+}}            
+title={'Test Marker3'}
+description={'This is a description of the marker'}
+/>])
+}
+
 
 
 const mapStyle = [
