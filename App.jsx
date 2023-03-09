@@ -151,36 +151,6 @@ ArrayOfLocations = {
   ]
 }
 
-=======
-mar = () =>{ return ([<Marker
-draggable
-coordinate={{
-  latitude: 37.78825,
-  longitude: -122.4324,
-}}            
-title={'Test Marker1'}
-description={'This is a description of the marker'}
-/>, 
-<Marker
-draggable
-coordinate={{
-  latitude: 35.78825,
-  longitude: -122.4324,
-}}            
-title={'Test Marker2'}
-description={'This is a description of the marker'}
-/>,
-<Marker
-draggable
-coordinate={{
-  latitude: 36.78825,
-  longitude: -122.4324,
-}}            
-title={'Test Marker3'}
-description={'This is a description of the marker'}
-/>])
-}
-
 const mapStyle = [
   
   {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
