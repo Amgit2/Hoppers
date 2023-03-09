@@ -89,7 +89,7 @@ function App(){
             longitudeDelta: 0.0421,
           }}
           customMapStyle={mapStyle}>
-          {this.mar()}
+          {this.makeMarker()}
         </MapView>
       </View>
       </Section>
@@ -108,36 +108,48 @@ makeMaker = () => {
 }
 export default App;
 
-mar = () =>{ return ([<Marker
-draggable
-coordinate={{
-  latitude: 37.78825,
-  longitude: -122.4324,
-}}            
-title={'Test Marker1'}
-description={'This is a description of the marker'}
-/>, 
-<Marker
-draggable
-coordinate={{
-  latitude: 35.78825,
-  longitude: -122.4324,
-}}            
-title={'Test Marker2'}
-description={'This is a description of the marker'}
-/>,
-<Marker
-draggable
-coordinate={{
-  latitude: 36.78825,
-  longitude: -122.4324,
-}}            
-title={'Test Marker3'}
-description={'This is a description of the marker'}
-/>])
+makeMarker = () =>{ 
+let arrayMarker = [];  
+for (let i = 0; i<this.ArrayOfLocations.LocationJson.length; i++){
+
+ arrayMarker.push(<Marker
+  draggable
+  coordinate={{
+    latitude: this.ArrayOfLocations.LocationJson[i].latitude,
+    longitude: this.ArrayOfLocations.LocationJson[i].longitude,
+  }}            
+  title={this.ArrayOfLocations.LocationJson[i].name}
+  description={this.ArrayOfLocations.LocationJson[i].description}
+  />);
+}  
+
+console.log(arrayMarker);
+return (arrayMarker);
 }
 
 
+ArrayOfLocations = {
+  LocationJson: [
+    {
+      name:'1-1-1',
+      latitude: 33,
+      longitude: -122.4324,
+      description: 'This is a description of the marker'
+    },
+    {
+      name:'2-2',
+      latitude: 35.78825,
+      longitude: -122.4324,
+      description: 'This is a description of the marker'
+    },
+    {
+      name:'3-1',
+      latitude: 38.78825,
+      longitude: -122.4324,
+      description: 'This is a description of the marker'
+    }
+  ]
+}
 
 const mapStyle = [
   
