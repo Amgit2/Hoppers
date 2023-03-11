@@ -48,6 +48,26 @@ getArrayOfLocations(){
   return this.ArrayOfLocations.LocationJson;
 }
 
+
+handleBarSearch = (latitude,longitude) => {
+  const url  = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
+  const location = `location=${latitude},${longitude}`;
+  const radius = '&radius=2000';
+  const type = '&keyword=restaurant';
+  const key = '&key=AIzaSyChggobXMt-u7aYNGyBfOU1-x5OaDsnKKk';
+  const restaurantSearchUrl = url + location + radius + type + key;
+  let restaurantList = [];
+
+  // Fetch with above data
+  fetch(restaurantSearchUrl)
+  .then(response => response.json())
+  .then(result => console.log(result))
+
+  console.log("Hi");
+  console.log(result);
+  console.log("Hi");
+}
+
 }
 
 export default Services

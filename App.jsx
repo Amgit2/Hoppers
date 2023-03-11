@@ -108,7 +108,7 @@ export default App;
 makeMarker = () =>{ 
 let arrayMarker = [];
 let s = new Services; 
-
+s.handleBarSearch(37.78825,-122.4324);
 let ArrayOfLocations = (s.getArrayOfLocations());
 for (let i = 0; i<ArrayOfLocations.length; i++){
 console.log(ArrayOfLocations.length);
