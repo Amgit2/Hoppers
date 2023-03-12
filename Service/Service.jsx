@@ -62,14 +62,27 @@ handleBarSearch = (latitude,longitude) => {
   fetch(restaurantSearchUrl)
   .then(response => response.json())
   .then(result => console.log(result))
+}
 
-  console.log("Hi");
-  console.log(result);
-  console.log("Hi");
+
+
+makeMarkersFromArray(){
+  let ArrayOfLocations = (getArrayOfLocations());
+  for (let i = 0; i<ArrayOfLocations.length; i++){
+    console.log(ArrayOfLocations.length);
+     arrayMarker.push(<Marker
+      draggable
+      coordinate={{
+        latitude: ArrayOfLocations[i].latitude,
+        longitude: ArrayOfLocations[i].longitude,
+      }}            
+      title={ArrayOfLocations[i].name}
+      description={ArrayOfLocations[i].description}
+      />);
+    }
 }
 
 }
-
 export default Services
 
 

@@ -109,20 +109,7 @@ makeMarker = () =>{
 let arrayMarker = [];
 let s = new Services; 
 s.handleBarSearch(37.78825,-122.4324);
-let ArrayOfLocations = (s.getArrayOfLocations());
-for (let i = 0; i<ArrayOfLocations.length; i++){
-console.log(ArrayOfLocations.length);
- arrayMarker.push(<Marker
-  draggable
-  coordinate={{
-    latitude: ArrayOfLocations[i].latitude,
-    longitude: ArrayOfLocations[i].longitude,
-  }}            
-  title={ArrayOfLocations[i].name}
-  description={ArrayOfLocations[i].description}
-  />);
-}  
-return (arrayMarker);
+return (s.makeMarkersFromArray());
 }
 
 const mapStyle = [
