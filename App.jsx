@@ -105,11 +105,14 @@ function App(){
 
 export default App;
 
-makeMarker = () =>{ 
-let arrayMarker = [];
+makeMarker = () =>{
+  let temp;
 let s = new Services; 
-s.handleBarSearch(37.78825,-122.4324);
-return (s.makeMarkersFromArray());
+//s.handleBarSearch(37.78825,-122.4324);
+temp = s.makeMarkersFromArray();
+//s.handleBarSearch(37.78825,-122.4324).then((responce) => temp = s.makeMarkersFromArray()); // THIS IS BROKEN, nEED TO GET 2nd funciton to wait on the first
+return temp;
+//return (s.makeMarkersFromArray());
 }
 
 const mapStyle = [

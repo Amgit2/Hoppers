@@ -9,6 +9,8 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+
+import {Marker} from 'react-native-maps';
 /*
 We call Services From the front end
 
@@ -50,6 +52,7 @@ getArrayOfLocations(){
 
 
 handleBarSearch = (latitude,longitude) => {
+  let array = [];
   const url  = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
   const location = `location=${latitude},${longitude}`;
   const radius = '&radius=2000';
@@ -61,15 +64,38 @@ handleBarSearch = (latitude,longitude) => {
   // Fetch with above data
   fetch(restaurantSearchUrl)
   .then(response => response.json())
-  .then(result => console.log(result))
+  .then(result => this.helperHandleBarSearch(result.results))
 }
 
+helperHandleBarSearch(ArrayFromGoogle){
+  
+  let MarkerCreatitionArray = []
+  for(let i = 0; i < ArrayFromGoogle.length; i++){
+    console.log("From Array numer:" + i);
+    
+    let DataJson = {};
+    DataJson.latitude = ArrayFromGoogle[i].geometry.location.lat; // latitude
+    DataJson.longitude = ArrayFromGoogle[i].geometry.location.lng; // longitude
+    DataJson.name = ArrayFromGoogle[i].name; // name
+    DataJson.decription = ArrayFromGoogle[i].types[0]; // decription
+    DataJson.open_now = ArrayFromGoogle[i].opening_hours.open_now; // now open
+    DataJson.address = ArrayFromGoogle[i].vicinity; // address  
 
+    console.log(DataJson);
+    MarkerCreatitionArray.push(DataJson);
+    console.log("From Array");
+  }
+
+  this.ArrayOfLocations.LocationJson = MarkerCreatitionArray;
+  console.log("The Size of Location Array is: " + this.ArrayOfLocations.LocationJson.length);
+
+}
 
 makeMarkersFromArray(){
-  let ArrayOfLocations = (getArrayOfLocations());
+  arrayMarker = [];
+  let ArrayOfLocations = this.getArrayOfLocations();
   for (let i = 0; i<ArrayOfLocations.length; i++){
-    console.log(ArrayOfLocations.length);
+    console.log("From Marker Maker 4:15:  " +ArrayOfLocations.length);
      arrayMarker.push(<Marker
       draggable
       coordinate={{
@@ -80,6 +106,7 @@ makeMarkersFromArray(){
       description={ArrayOfLocations[i].description}
       />);
     }
+    return arrayMarker;
 }
 
 }
