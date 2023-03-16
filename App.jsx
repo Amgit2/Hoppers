@@ -37,6 +37,7 @@ let SectionProps  = {"title":""};
 //}>
 // function Section({children, title}: SectionProps): JSX.Element {
 function Section({children, title}){
+  helper();
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -60,6 +61,15 @@ function Section({children, title}){
       </Text>
     </View>
   );
+}
+
+async function helper(){
+  let myTest = new helper(function(resolve, reject) {
+    resolve("BOIIIII");
+  });
+
+  console.log("THIS IS IT");
+  console.log(myTest); 
 }
 
 function App(){
@@ -94,6 +104,7 @@ function App(){
           }}
           customMapStyle={mapStyle}>
           {this.makeMarker()}
+
         </MapView>
       </View>
       </Section>
@@ -105,10 +116,15 @@ function App(){
 
 export default App;
 
+add = () => {
+  return 1 + 1;
+}
+
+
 makeMarker = () =>{
   let temp;
 let s = new Services; 
-//s.handleBarSearch(37.78825,-122.4324);
+s.handleBarSearch(37.78825,-122.4324);
 temp = s.makeMarkersFromArray();
 //s.handleBarSearch(37.78825,-122.4324).then((responce) => temp = s.makeMarkersFromArray()); // THIS IS BROKEN, nEED TO GET 2nd funciton to wait on the first
 return temp;
