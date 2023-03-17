@@ -53,9 +53,29 @@ getArrayOfLocations(){
 }
 
 helper = async () =>{
-  this.locations = await this.handleBarSearch(37.78825, -122.4324);
+  this.locations = await this.barSearch(37.78825, -122.4324);
   return await this.makeMarkersFromArray()
 }
+
+async barSearch(lat, long){
+  console.log("Bar Search")
+  let array = [];
+  const url  = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
+  const location = `location=${lat},${long}`;
+  const radius = '&radius=2000';
+  const type = '&keyword=restaurant';
+  const key = '&key=AIzaSyChggobXMt-u7aYNGyBfOU1-x5OaDsnKKk';
+  const restaurantSearchUrl = url + location + radius + type + key;
+  let restaurantList = [];
+
+  // Fetch with above data
+  response = await fetch(restaurantSearchUrl);
+  barData = await response.json();
+  result = this.helperHandleBarSearch(barData.results);
+  
+  return result
+}
+
 
 handleBarSearch = (latitude,longitude) => {
   let array = [];
@@ -68,19 +88,18 @@ handleBarSearch = (latitude,longitude) => {
   let restaurantList = [];
 
   // Fetch with above data
-  fetch(restaurantSearchUrl)
+  return fetch(restaurantSearchUrl)
   .then(response => response.json())
   .then(result => this.helperHandleBarSearch(result.results))
-  return new Promise.resolve(true)
 }
 
 helperHandleBarSearch(ArrayFromGoogle){
   
   let MarkerCreatitionArray = []
-
+  console.log("before the for loop")
   for(let i = 0; i < ArrayFromGoogle.length; i++){
     //console.log("From Array numer:" + i);
-    
+    console.log("in the for loop")
     let DataJson = {};
     DataJson.latitude = ArrayFromGoogle[i].geometry.location.lat; // latitude
     DataJson.longitude = ArrayFromGoogle[i].geometry.location.lng; // longitude

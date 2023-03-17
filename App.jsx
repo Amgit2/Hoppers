@@ -63,25 +63,6 @@ function Section({children, title}){
   );
 }
 
-// Create get current location functions
-bars = []
-
-setBars = (value) =>{
-  bars = value
-  console.log("this is bars"+bars)
-}
-
-helper().then(
-  function(value) {setBars(value)},
-  function(error) {"we not in da app :"+error}
-)
-
-async function helper(){
-  let s = new Services 
-  console.log(s.makeMarkersFromArray())
-  return await Promise.resolve(s.helper()); // Coordinates are current location
-}
-
 function App(){
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -113,7 +94,7 @@ function App(){
             longitudeDelta: 0.0421,
           }}
           customMapStyle={mapStyle}>
-          {this.bars}    
+          
         </MapView>
       </View>
       </Section>
@@ -138,6 +119,25 @@ temp = s.makeMarkersFromArray();
 //s.handleBarSearch(37.78825,-122.4324).then((responce) => temp = s.makeMarkersFromArray()); // THIS IS BROKEN, nEED TO GET 2nd funciton to wait on the first
 return temp;
 //return (s.makeMarkersFromArray());
+}
+
+// Create get current location functions
+bars = []
+
+setBars = (value) =>{
+  bars = value
+  console.log("this is bars")
+  console.log(bars)
+}
+
+helper().then(
+  function(value) {setBars(value)},
+  function(error) {"we not in da app :"+error}
+)
+
+async function helper(){
+  let s = new Services 
+  return await s.helper(); // Coordinates are current location
 }
 
 const mapStyle = [
