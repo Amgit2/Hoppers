@@ -46,10 +46,16 @@ ArrayOfLocations = {
   ]
 }
 
+locations = []
+
 getArrayOfLocations(){
   return this.ArrayOfLocations.LocationJson;
 }
 
+helper = async () =>{
+  this.locations = await this.handleBarSearch(37.78825, -122.4324);
+  return await this.makeMarkersFromArray()
+}
 
 handleBarSearch = (latitude,longitude) => {
   let array = [];
@@ -65,13 +71,15 @@ handleBarSearch = (latitude,longitude) => {
   fetch(restaurantSearchUrl)
   .then(response => response.json())
   .then(result => this.helperHandleBarSearch(result.results))
+  return new Promise.resolve(true)
 }
 
 helperHandleBarSearch(ArrayFromGoogle){
   
   let MarkerCreatitionArray = []
+
   for(let i = 0; i < ArrayFromGoogle.length; i++){
-    console.log("From Array numer:" + i);
+    //console.log("From Array numer:" + i);
     
     let DataJson = {};
     DataJson.latitude = ArrayFromGoogle[i].geometry.location.lat; // latitude
@@ -88,10 +96,11 @@ helperHandleBarSearch(ArrayFromGoogle){
 
   this.ArrayOfLocations.LocationJson = MarkerCreatitionArray;
   console.log("The Size of Location Array is: " + this.ArrayOfLocations.LocationJson.length);
-
+  return MarkerCreatitionArray
 }
 
 makeMarkersFromArray(){
+  this.handleBarSearch(37.78825,-122.4324);
   arrayMarker = [];
   let ArrayOfLocations = this.getArrayOfLocations();
   for (let i = 0; i<ArrayOfLocations.length; i++){

@@ -63,15 +63,23 @@ function Section({children, title}){
   );
 }
 
+// Create get current location functions
+bars = []
+
+setBars = (value) =>{
+  bars = value
+  console.log("this is bars"+bars)
+}
 
 helper().then(
-  function(value) {console.log("we in da app baby:"+value)},
+  function(value) {setBars(value)},
   function(error) {"we not in da app :"+error}
 )
 
 async function helper(){
   let s = new Services 
-  return Promise.resolve(s.handleBarSearch(37.78825,-122.4324)); // Coordinates are current location
+  console.log(s.makeMarkersFromArray())
+  return await Promise.resolve(s.helper()); // Coordinates are current location
 }
 
 function App(){
@@ -105,7 +113,7 @@ function App(){
             longitudeDelta: 0.0421,
           }}
           customMapStyle={mapStyle}>
-
+          {this.bars}    
         </MapView>
       </View>
       </Section>
