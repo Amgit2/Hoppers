@@ -63,13 +63,15 @@ function Section({children, title}){
   );
 }
 
-async function helper(){
-  let myTest = new helper(function(resolve, reject) {
-    resolve("BOIIIII");
-  });
 
-  console.log("THIS IS IT");
-  console.log(myTest); 
+helper().then(
+  function(value) {console.log("we in da app baby:"+value)},
+  function(error) {"we not in da app :"+error}
+)
+
+async function helper(){
+  let s = new Services 
+  return Promise.resolve(s.handleBarSearch(37.78825,-122.4324)); // Coordinates are current location
 }
 
 function App(){
@@ -103,7 +105,6 @@ function App(){
             longitudeDelta: 0.0421,
           }}
           customMapStyle={mapStyle}>
-          {this.makeMarker()}
 
         </MapView>
       </View>
@@ -120,7 +121,7 @@ add = () => {
   return 1 + 1;
 }
 
-
+//{this.makeMarker()} line 107
 makeMarker = () =>{
   let temp;
 let s = new Services; 

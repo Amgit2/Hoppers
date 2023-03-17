@@ -81,9 +81,9 @@ helperHandleBarSearch(ArrayFromGoogle){
     DataJson.open_now = ArrayFromGoogle[i].opening_hours.open_now; // now open
     DataJson.address = ArrayFromGoogle[i].vicinity; // address  
 
-    console.log(DataJson);
+    //console.log(DataJson);
     MarkerCreatitionArray.push(DataJson);
-    console.log("From Array");
+    //console.log("From Array");
   }
 
   this.ArrayOfLocations.LocationJson = MarkerCreatitionArray;
