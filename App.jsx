@@ -1,11 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
+import React, { useState } from 'react';
 import {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -13,11 +6,12 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  Button,
   useColorScheme,
   View,
 } from 'react-native';
 // Import Map and Marker
-import MapView, {Marker} from 'react-native-maps';
+import MapView, {Marker, enableLatestRenderer, PROVIDER_GOOGLE } from 'react-native-maps';
 
 import {
   Colors,
@@ -27,220 +21,153 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import Services from './Service/Service';
 
 
 
-let SectionProps  = {"title":""};
-//let SectionProps = PropsWithChildren<{
-//  "title": string
-//}>
-// function Section({children, title}: SectionProps): JSX.Element {
-function Section({children, title}){
-  helper();
-  const isDarkMode = useColorScheme() === 'dark';
+
+const App = () =>{
+  
+  const [mapRegion, setMapState] = useState({
+    latitude: 37.78825,
+    longitude: -122.4324,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  });
+
+  const onClickHandler = () => {
+    setMapState({
+      latitude: 39.78825,
+      longitude: -120.4324,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    })
+  }
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={styles.container}>
+      <Button title = 'Update State'  onPress={onClickHandler}></Button>
+     <MapView
+       provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+       style={styles.map}
+       
+       region={mapRegion}
+     >
+     </MapView>
+     
+   </View>
+ );
+  // return(
+    
+  //     <MapView //style={styles.map}
+  //       region={mapRegion}
+  //     >
+  //     <Button title = 'Update State'  onPress={onClickHandler}></Button>  
+  //       </MapView>
+    
+  // )
+ 
+ const markerLocationJson = [
+  {
+    name:'1-1-1',
+    latitude: 33,
+    longitude: -122.4324,
+    description: 'This is a description of the marker'
+  },
+  {
+    name:'2-2',
+    latitude: 35.78825,
+    longitude: -122.4324,
+    description: 'This is a description of the marker'
+  },
+  {
+    name:'3-1',
+    latitude: 38.78825,
+    longitude: -122.4324,
+    description: 'This is a description of the marker'
+  }
+]
+
+}
+
+
+ export default App;
+
+ const styles = StyleSheet.create({
+  body: {
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent:'center',
+    flex: 1,
+  },
+  map: {
+    width:'100%',
+    height:'100%'
+  },
+ });
+
+
+
+ //import Services from '../android/app/build/Service/Service';
+/*
+
+const MapStateComponent = () => {
+  
+
+  const updateMap = (key, value) => {
+    setMapState(map => new Map(map.set(key, value)));
+  }
+
+  useEffect(() => {
+
+  })
+}
+
+
+region: {
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }
+
+
+      function workingMap() {
+  return (
+     <View style={styles.container}>
+      <MapView
+        provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+        style={styles.map}
+        onRegionChange={onRegionChange}
+        region={{
+         latitude: 37.78825,
+         longitude: -122.4324,
+         latitudeDelta: 0.0922,
+         longitudeDelta: 0.0421,
+        }}
+      >
+        {showMarkerLocations()}
+      </MapView>
     </View>
   );
-}
 
-function App(){
-  const isDarkMode = useColorScheme() === 'dark';
+*/
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}/>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
 
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-        <Section title="Hoppers">
-        <View style={styles.container}>
-        <MapView
-          style={styles.mapStyle}
-          initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-          customMapStyle={mapStyle}>
-          
-        </MapView>
-      </View>
-      </Section>
-      </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
 
-export default App;
+// makeMarker = () =>{
+//   let temp;
+// let s = new Services; 
+// s.handleBarSearch(37.78825,-122.4324);
+// temp = s.makeMarkersFromArray();
+// //s.handleBarSearch(37.78825,-122.4324).then((responce) => temp = s.makeMarkersFromArray()); // THIS IS BROKEN, nEED TO GET 2nd funciton to wait on the first
+// return temp;
+// //return (s.makeMarkersFromArray());
+// }
 
-add = () => {
-  return 1 + 1;
-}
+/* <View style={styles.body}>
+    //   <Text style={styles.text}> {name}</Text>
+    //   <Text style={styles.text}> This session number {session.number}</Text>
+    //   <Text style={styles.text}> {current ? 'current session' : 'next current'}</Text>
+    //   <Button title = 'Update State'  onPress={onClickHandler}></Button>
 
-//{this.makeMarker()} line 107
-makeMarker = () =>{
-  let temp;
-let s = new Services; 
-s.handleBarSearch(37.78825,-122.4324);
-temp = s.makeMarkersFromArray();
-//s.handleBarSearch(37.78825,-122.4324).then((responce) => temp = s.makeMarkersFromArray()); // THIS IS BROKEN, nEED TO GET 2nd funciton to wait on the first
-return temp;
-//return (s.makeMarkersFromArray());
-}
-
-// Create get current location functions
-bars = []
-
-setBars = (value) =>{
-  bars = value
-  console.log("this is bars")
-  console.log(bars)
-}
-
-helper().then(
-  function(value) {setBars(value)},
-  function(error) {"we not in da app :"+error}
-)
-
-async function helper(){
-  let s = new Services 
-  return await s.helper(); // Coordinates are current location
-}
-
-const mapStyle = [
-  
-  {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
-  {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
-  {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
-  {
-    featureType: 'administrative.locality',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#d59563'}],
-  },
-  {
-    featureType: 'poi',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#d59563'}],
-  },
-  {
-    featureType: 'poi.park',
-    elementType: 'geometry',
-    stylers: [{color: '#263c3f'}],
-  },
-  {
-    featureType: 'poi.park',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#6b9a76'}],
-  },
-  {
-    featureType: 'road',
-    elementType: 'geometry',
-    stylers: [{color: '#38414e'}],
-  },
-  {
-    featureType: 'road',
-    elementType: 'geometry.stroke',
-    stylers: [{color: '#212a37'}],
-  },
-  {
-    featureType: 'road',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#9ca5b3'}],
-  },
-  {
-    featureType: 'road.highway',
-    elementType: 'geometry',
-    stylers: [{color: '#746855'}],
-  },
-  {
-    featureType: 'road.highway',
-    elementType: 'geometry.stroke',
-    stylers: [{color: '#1f2835'}],
-  },
-  {
-    featureType: 'road.highway',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#f3d19c'}],
-  },
-  {
-    featureType: 'transit',
-    elementType: 'geometry',
-    stylers: [{color: '#2f3948'}],
-  },
-  {
-    featureType: 'transit.station',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#d59563'}],
-  },
-  {
-    featureType: 'water',
-    elementType: 'geometry',
-    stylers: [{color: '#17263c'}],
-  },
-  {
-    featureType: 'water',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#515c6d'}],
-  },
-  {
-    featureType: 'water',
-    elementType: 'labels.text.stroke',
-    stylers: [{color: '#17263c'}],
-  },
-];
-
-const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    top: 0,
-    left: 40,
-    width: 400, 
-    height: 720,
-    //right: 0,
-    //bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
-  mapStyle: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: 400, 
-    height: 720,
-    //right: 0,
-    //bottom: 0,
-  },
-});
+    // </View> */
