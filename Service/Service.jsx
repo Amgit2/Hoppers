@@ -88,6 +88,7 @@ handleBarSearch = (latitude,longitude) => {
   let restaurantList = [];
 
   // Fetch with above data
+  // Fetch with above data
   return fetch(restaurantSearchUrl)
   .then(response => response.json())
   .then(result => this.helperHandleBarSearch(result.results))
@@ -118,14 +119,36 @@ helperHandleBarSearch(ArrayFromGoogle){
   return MarkerCreatitionArray
 }
 
+addMoreMarkersToArray(){
+  this.ArrayOfLocations.LocationJson.push({
+    name:'4-1-1',
+    latitude: 33.5,
+    longitude: -122.2,
+    description: 'This is a description of the marker 2'
+  });
+  this.ArrayOfLocations.LocationJson.push({
+    name:'4-2-2',
+    latitude: 35.5,
+    longitude: -121.2,
+    description: 'This is a description of the marker 2'
+  });
+  this.ArrayOfLocations.LocationJson.push({
+    name:'4-3-3',
+    latitude: 38.5,
+    longitude: -124.2,
+    description: 'This is a description of the marker 2'
+  });
+}
+
 makeMarkersFromArray(){
-  this.handleBarSearch(37.78825,-122.4324);
+  //this.handleBarSearch(37.78825,-122.4324);
   arrayMarker = [];
   let ArrayOfLocations = this.getArrayOfLocations();
   for (let i = 0; i<ArrayOfLocations.length; i++){
     console.log("From Marker Maker 4:15:  " +ArrayOfLocations.length);
      arrayMarker.push(<Marker
       draggable
+      key={ArrayOfLocations[i].name}
       coordinate={{
         latitude: ArrayOfLocations[i].latitude,
         longitude: ArrayOfLocations[i].longitude,
@@ -139,5 +162,3 @@ makeMarkersFromArray(){
 
 }
 export default Services
-
-
