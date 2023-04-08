@@ -51,6 +51,8 @@ const App = () =>{
   }
 
   return (
+    //this.handleBarSearch(37.78825,-122.4324);
+    //this.handleBarSearch(37.78825,-122.4324);
     <View style={styles.container}>
       <Button title = 'Update State'  onPress={onClickHandler}></Button>
      <MapView
