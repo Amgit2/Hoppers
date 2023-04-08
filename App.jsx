@@ -20,7 +20,8 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import Services from './android/app/build/Service/Service';
+
+import Services from './Service/Service';
 
 const App = () =>{
   let s = new Services;

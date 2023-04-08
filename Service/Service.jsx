@@ -142,6 +142,10 @@ addMoreMarkersToArray(){
 
 makeMarkersFromArray(){
   //this.handleBarSearch(37.78825,-122.4324);
+  //this.handleBarSearch(37.78825,-122.4324);
+  //this.handleBarSearch(37.78825,-122.4324);
+  //this.handleBarSearch(37.78825,-122.4324);
+  //this.handleBarSearch(37.78825,-122.4324);
   arrayMarker = [];
   let ArrayOfLocations = this.getArrayOfLocations();
   for (let i = 0; i<ArrayOfLocations.length; i++){
@@ -162,3 +166,5 @@ makeMarkersFromArray(){
 
 }
 export default Services
+
+
