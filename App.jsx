@@ -20,37 +20,46 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-
-
-
-
+import Services from './android/app/build/Service/Service';
 
 const App = () =>{
+  let s = new Services;
+  let markerArray = s.makeMarkersFromArray();
   
-  const [mapRegion, setMapState] = useState({
-    latitude: 37.78825,
+  let initialRegion = {latitude: 37.78825,
     longitude: -122.4324,
     latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-  });
+    longitudeDelta: 0.0421,}
+
+
+  const [mapRegion, setMapState] = useState(
+    initialRegion
+  );
+  const [markers2, setMarkers] = useState(
+    markerArray
+  );
 
   const onClickHandler = () => {
-    setMapState({
-      latitude: 39.78825,
-      longitude: -120.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    })
+    // setMapState({
+    //   latitude: 39.78825,
+    //   longitude: -120.4324,
+    //   latitudeDelta: 0.0922,
+    //   longitudeDelta: 0.0421,
+    // })
+    s.addMoreMarkersToArray();
+    setMarkers(s.makeMarkersFromArray());
   }
+
   return (
     <View style={styles.container}>
       <Button title = 'Update State'  onPress={onClickHandler}></Button>
      <MapView
        provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-       style={styles.map}
-       
+       style={styles.map}       
        region={mapRegion}
+       
      >
+      {markers2}
      </MapView>
      
    </View>
