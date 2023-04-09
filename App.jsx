@@ -24,21 +24,28 @@ import {
 import Services from './Service/Service';
 
 const App = () =>{
+
+  
   let s = new Services;
   let markerArray = s.makeMarkersFromArray();
-  
-  let initialRegion = {latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,}
-
-
   const [mapRegion, setMapState] = useState(
     initialRegion
   );
   const [markers2, setMarkers] = useState(
     markerArray
   );
+  
+  console.log("THIS IS IT FINAL");
+  //setMarker
+  //(s.barSearch(37.78825,-122.4324));
+  console.log("THIS IS IT FINAL");
+  let initialRegion = {latitude: 37.78825,
+    longitude: -122.4324,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,}
+
+
+  
 
   const onClickHandler = () => {
     // setMapState({
@@ -47,7 +54,6 @@ const App = () =>{
     //   latitudeDelta: 0.0922,
     //   longitudeDelta: 0.0421,
     // })
-    s.addMoreMarkersToArray();
     setMarkers(s.makeMarkersFromArray());
   }
 
