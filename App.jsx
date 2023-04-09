@@ -25,7 +25,13 @@ import Services from './Service/Service';
 
 const App = () =>{
 
-  
+ 
+      var minute = new Date().getMinutes();
+      var second = new Date().getSeconds();
+      var hour = new Date().getHours();
+
+
+  console.log("Run: " + hour + ":" + minute + ":" + second);//format: d-m-y;
   let s = new Services;
   let markerArray = s.makeMarkersFromArray();
   const [mapRegion, setMapState] = useState(
@@ -48,18 +54,10 @@ const App = () =>{
   
 
   const onClickHandler = () => {
-    // setMapState({
-    //   latitude: 39.78825,
-    //   longitude: -120.4324,
-    //   latitudeDelta: 0.0922,
-    //   longitudeDelta: 0.0421,
-    // })
     setMarkers(s.makeMarkersFromArray());
   }
 
   return (
-    //this.handleBarSearch(37.78825,-122.4324);
-    //this.handleBarSearch(37.78825,-122.4324);
     <View style={styles.container}>
       <Button title = 'Update State'  onPress={onClickHandler}></Button>
      <MapView
@@ -73,15 +71,6 @@ const App = () =>{
      
    </View>
  );
-  // return(
-    
-  //     <MapView //style={styles.map}
-  //       region={mapRegion}
-  //     >
-  //     <Button title = 'Update State'  onPress={onClickHandler}></Button>  
-  //       </MapView>
-    
-  // )
  
  const markerLocationJson = [
   {
