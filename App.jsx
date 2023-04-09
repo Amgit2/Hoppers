@@ -32,39 +32,35 @@ const App = () =>{
 
 
   console.log("Run: " + hour + ":" + minute + ":" + second);//format: d-m-y;
+
+  let initialRegion = {latitude: 37.78825,
+    longitude: -122.4324,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,}
+
   let s = new Services;
   let markerArray = s.makeMarkersFromArray();
+  
+  console.log("THIS IS IT FINAL");
+
+  //setMarkers(s.barSearch(37.78825,-122.4324));
+  React.useEffect(() => {
+    //setMarkers
+    (s.barSearch(37.78825,-122.4324));
+  }, []);
+
+  console.log("THIS IS IT FINAL");
+
+  const onClickHandler = () => {
+    setMarkers(s.getArrayOfMarkers());
+  }
+
   const [mapRegion, setMapState] = useState(
     initialRegion
   );
   const [markers2, setMarkers] = useState(
     markerArray
   );
-  
-  console.log("THIS IS IT FINAL");
-  /*
-      React.useEffect(() => {
-    setExampleState({ b: '2' });
-  }, []);
-
-  */
-  //setMarkers(s.barSearch(37.78825,-122.4324));
-  React.useEffect(() => {
-    //setMarkers
-    (s.barSearch(37.78825,-122.4324));
-  }, []);
-  console.log("THIS IS IT FINAL");
-  let initialRegion = {latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,}
-
-
-  
-
-  const onClickHandler = () => {
-    setMarkers(s.getArrayOfMarkers());
-  }
 
   return (
     <View style={styles.container}>
@@ -81,27 +77,6 @@ const App = () =>{
    </View>
  );
  
- const markerLocationJson = [
-  {
-    name:'1-1-1',
-    latitude: 33,
-    longitude: -122.4324,
-    description: 'This is a description of the marker'
-  },
-  {
-    name:'2-2',
-    latitude: 35.78825,
-    longitude: -122.4324,
-    description: 'This is a description of the marker'
-  },
-  {
-    name:'3-1',
-    latitude: 38.78825,
-    longitude: -122.4324,
-    description: 'This is a description of the marker'
-  }
-]
-
 }
 
 
@@ -119,71 +94,3 @@ const App = () =>{
     height:'100%'
   },
  });
-
-
-
- //import Services from '../android/app/build/Service/Service';
-/*
-
-const MapStateComponent = () => {
-  
-
-  const updateMap = (key, value) => {
-    setMapState(map => new Map(map.set(key, value)));
-  }
-
-  useEffect(() => {
-
-  })
-}
-
-
-region: {
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      }
-
-
-      function workingMap() {
-  return (
-     <View style={styles.container}>
-      <MapView
-        provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-        style={styles.map}
-        onRegionChange={onRegionChange}
-        region={{
-         latitude: 37.78825,
-         longitude: -122.4324,
-         latitudeDelta: 0.0922,
-         longitudeDelta: 0.0421,
-        }}
-      >
-        {showMarkerLocations()}
-      </MapView>
-    </View>
-  );
-
-*/
-
-
-
-
-// makeMarker = () =>{
-//   let temp;
-// let s = new Services; 
-// s.handleBarSearch(37.78825,-122.4324);
-// temp = s.makeMarkersFromArray();
-// //s.handleBarSearch(37.78825,-122.4324).then((responce) => temp = s.makeMarkersFromArray()); // THIS IS BROKEN, nEED TO GET 2nd funciton to wait on the first
-// return temp;
-// //return (s.makeMarkersFromArray());
-// }
-
-/* <View style={styles.body}>
-    //   <Text style={styles.text}> {name}</Text>
-    //   <Text style={styles.text}> This session number {session.number}</Text>
-    //   <Text style={styles.text}> {current ? 'current session' : 'next current'}</Text>
-    //   <Button title = 'Update State'  onPress={onClickHandler}></Button>
-
-    // </View> */
