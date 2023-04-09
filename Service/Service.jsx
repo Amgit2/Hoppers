@@ -47,9 +47,14 @@ ArrayOfLocations = {
 }
 
 locations = []
+ArrayOfMarker = []
 
 getArrayOfLocations(){
   return this.ArrayOfLocations.LocationJson;
+}
+
+getArrayOfMarkers(){
+  return this.ArrayOfMarker;
 }
 
 // helper = async () =>{
@@ -72,11 +77,12 @@ async barSearch(lat, long){
   response = await fetch(restaurantSearchUrl);
   barData = await response.json();
   result = this.helperHandleBarSearch(barData.results);  
-  const finalArray = this.makeMarkersFromArray();
-  console.log("THIS IS IT");
+  let finalArray = await this.makeMarkersFromArray();
+  console.log("THIS IS IT 1");
+  this.ArrayOfMarker = finalArray;
   console.log(finalArray);
-  console.log("THIS IS IT");
-  return finalArray;
+  console.log("THIS IS IT 2");
+  //return finalArray;
 }
 
 
@@ -142,11 +148,12 @@ addMoreMarkersToArray(){
 }
 
 makeMarkersFromArray(){
-  //this.handleBarSearch(37.78825,-122.4324);
   arrayMarker = [];
   let ArrayOfLocations = this.getArrayOfLocations();
+  
   for (let i = 0; i<ArrayOfLocations.length; i++){
     console.log("From Marker Maker 4:15:  " +ArrayOfLocations.length);
+    console.log(ArrayOfLocations[i]);
     this.counter++
     console.log("Counter is at: " +this.counter);
      arrayMarker.push(<Marker
@@ -160,6 +167,7 @@ makeMarkersFromArray(){
       description={ArrayOfLocations[i].description}
       />);
     }
+    this.ArrayOfMarker = this.arrayMarker;
     return arrayMarker;
 }
 

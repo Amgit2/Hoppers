@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -42,8 +42,17 @@ const App = () =>{
   );
   
   console.log("THIS IS IT FINAL");
-  //setMarker
-  //(s.barSearch(37.78825,-122.4324));
+  /*
+      React.useEffect(() => {
+    setExampleState({ b: '2' });
+  }, []);
+
+  */
+  //setMarkers(s.barSearch(37.78825,-122.4324));
+  React.useEffect(() => {
+    //setMarkers
+    (s.barSearch(37.78825,-122.4324));
+  }, []);
   console.log("THIS IS IT FINAL");
   let initialRegion = {latitude: 37.78825,
     longitude: -122.4324,
@@ -54,7 +63,7 @@ const App = () =>{
   
 
   const onClickHandler = () => {
-    setMarkers(s.makeMarkersFromArray());
+    setMarkers(s.getArrayOfMarkers());
   }
 
   return (
