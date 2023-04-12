@@ -1,11 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -13,11 +6,12 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  Button,
   useColorScheme,
   View,
 } from 'react-native';
 // Import Map and Marker
-import MapView, {Marker} from 'react-native-maps';
+import MapView, {Marker, enableLatestRenderer, PROVIDER_GOOGLE } from 'react-native-maps';
 
 import {
   Colors,
@@ -27,231 +21,76 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-let SectionProps  = {"title":""};
-//let SectionProps = PropsWithChildren<{
-//  "title": string
-//}>
-// function Section({children, title}: SectionProps): JSX.Element {
-function Section({children, title}){
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+import Services from './Service/Service';
 
-function App(){
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () =>{
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+ 
+      var minute = new Date().getMinutes();
+      var second = new Date().getSeconds();
+      var hour = new Date().getHours();
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}/>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
 
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-        <Section title="Hoppers">
-        <View style={styles.container}>
-        <MapView
-          style={styles.mapStyle}
-          initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-          customMapStyle={mapStyle}>
-          {this.makeMarker()}
-        </MapView>
-      </View>
-      </Section>
-      </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
+  console.log("Run: " + hour + ":" + minute + ":" + second);//format: d-m-y;
 
-makeMaker = () => {
-  console.log("HI HERE");
-  return (<Marker coordinate={{
-    latitude: 37.78825,
+  let initialRegion = {latitude: 37.78825,
     longitude: -122.4324,
-  }}></Marker>)
-}
-export default App;
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,}
 
-makeMarker = () =>{ 
-let arrayMarker = [];  
-for (let i = 0; i<this.ArrayOfLocations.LocationJson.length; i++){
-
- arrayMarker.push(<Marker
-  draggable
-  coordinate={{
-    latitude: this.ArrayOfLocations.LocationJson[i].latitude,
-    longitude: this.ArrayOfLocations.LocationJson[i].longitude,
-  }}            
-  title={this.ArrayOfLocations.LocationJson[i].name}
-  description={this.ArrayOfLocations.LocationJson[i].description}
-  />);
-}  
-
-console.log(arrayMarker);
-return (arrayMarker);
-}
-
-
-ArrayOfLocations = {
-  LocationJson: [
-    {
-      name:'1-1-1',
-      latitude: 33,
-      longitude: -122.4324,
-      description: 'This is a description of the marker'
-    },
-    {
-      name:'2-2',
-      latitude: 35.78825,
-      longitude: -122.4324,
-      description: 'This is a description of the marker'
-    },
-    {
-      name:'3-1',
-      latitude: 38.78825,
-      longitude: -122.4324,
-      description: 'This is a description of the marker'
-    }
-  ]
-}
-
-const mapStyle = [
+  let s = new Services;
+  let markerArray = s.makeMarkersFromArray();
   
-  {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
-  {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
-  {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
-  {
-    featureType: 'administrative.locality',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#d59563'}],
-  },
-  {
-    featureType: 'poi',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#d59563'}],
-  },
-  {
-    featureType: 'poi.park',
-    elementType: 'geometry',
-    stylers: [{color: '#263c3f'}],
-  },
-  {
-    featureType: 'poi.park',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#6b9a76'}],
-  },
-  {
-    featureType: 'road',
-    elementType: 'geometry',
-    stylers: [{color: '#38414e'}],
-  },
-  {
-    featureType: 'road',
-    elementType: 'geometry.stroke',
-    stylers: [{color: '#212a37'}],
-  },
-  {
-    featureType: 'road',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#9ca5b3'}],
-  },
-  {
-    featureType: 'road.highway',
-    elementType: 'geometry',
-    stylers: [{color: '#746855'}],
-  },
-  {
-    featureType: 'road.highway',
-    elementType: 'geometry.stroke',
-    stylers: [{color: '#1f2835'}],
-  },
-  {
-    featureType: 'road.highway',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#f3d19c'}],
-  },
-  {
-    featureType: 'transit',
-    elementType: 'geometry',
-    stylers: [{color: '#2f3948'}],
-  },
-  {
-    featureType: 'transit.station',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#d59563'}],
-  },
-  {
-    featureType: 'water',
-    elementType: 'geometry',
-    stylers: [{color: '#17263c'}],
-  },
-  {
-    featureType: 'water',
-    elementType: 'labels.text.fill',
-    stylers: [{color: '#515c6d'}],
-  },
-  {
-    featureType: 'water',
-    elementType: 'labels.text.stroke',
-    stylers: [{color: '#17263c'}],
-  },
-];
+  console.log("THIS IS IT FINAL");
 
-const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    top: 0,
-    left: 40,
-    width: 400, 
-    height: 720,
-    //right: 0,
-    //bottom: 0,
+  //setMarkers(s.barSearch(37.78825,-122.4324));
+  React.useEffect(() => {
+    //setMarkers
+    (s.barSearch(37.78825,-122.4324));
+  }, []);
+
+  console.log("THIS IS IT FINAL");
+
+  const onClickHandler = () => {
+    setMarkers(s.getArrayOfMarkers());
+  }
+
+  const [mapRegion, setMapState] = useState(
+    initialRegion
+  );
+  const [markers2, setMarkers] = useState(
+    markerArray
+  );
+
+  return (
+    <View style={styles.container}>
+      <Button title = 'Update State'  onPress={onClickHandler}></Button>
+     <MapView
+       provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+       style={styles.map}       
+       region={mapRegion}
+       
+     >
+      {markers2}
+     </MapView>
+     
+   </View>
+ );
+ 
+}
+
+
+ export default App;
+
+ const styles = StyleSheet.create({
+  body: {
+    backgroundColor: '#ffffff',
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent:'center',
+    flex: 1,
   },
-  mapStyle: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: 400, 
-    height: 720,
-    //right: 0,
-    //bottom: 0,
+  map: {
+    width:'100%',
+    height:'100%'
   },
-});
+ });
