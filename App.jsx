@@ -21,62 +21,19 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import Services from './Service/Service';
+import MapScreen from './Navigation/Screens/MapScreen';
 
 const App = () =>{
 
- 
-      var minute = new Date().getMinutes();
-      var second = new Date().getSeconds();
-      var hour = new Date().getHours();
-
-
-  console.log("Run: " + hour + ":" + minute + ":" + second);//format: d-m-y;
-
-  let initialRegion = {latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,}
-
-  let s = new Services;
-  let markerArray = s.makeMarkersFromArray();
   
-  console.log("THIS IS IT FINAL");
 
-  //setMarkers(s.barSearch(37.78825,-122.4324));
-  React.useEffect(() => {
-    //setMarkers
-    (s.barSearch(37.78825,-122.4324));
-  }, []);
-
-  console.log("THIS IS IT FINAL");
-
-  const onClickHandler = () => {
-    setMarkers(s.getArrayOfMarkers());
-  }
-
-  const [mapRegion, setMapState] = useState(
-    initialRegion
-  );
-  const [markers2, setMarkers] = useState(
-    markerArray
-  );
-
-  return (
-    <View style={styles.container}>
-      <Button title = 'Update State'  onPress={onClickHandler}></Button>
-     <MapView
-       provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-       style={styles.map}       
-       region={mapRegion}
-       
-     >
-      {markers2}
-     </MapView>
+  return(
+  <View style={styles.container}>
+      <MapScreen
+      //onPress ={onClickHandler}
+      />
      
-   </View>
- );
- 
+   </View>)
 }
 
 
