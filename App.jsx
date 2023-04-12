@@ -23,13 +23,14 @@ import {
 
 import MapScreen from './Navigation/Screens/MapScreen';
 
-const App = () =>{
+const App = (props) =>{
 
   
 
   return(
   <View style={styles.container}>
       <MapScreen
+      onPress={props.PropsWithChildren}
       //onPress ={onClickHandler}
       />
      
