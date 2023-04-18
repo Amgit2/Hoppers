@@ -85,24 +85,6 @@ async barSearch(lat, long){
   //return finalArray;
 }
 
-
-// handleBarSearch = (latitude,longitude) => {
-//   let array = [];
-//   const url  = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
-//   const location = `location=${latitude},${longitude}`;
-//   const radius = '&radius=2000';
-//   const type = '&keyword=restaurant';
-//   const key = '&key=AIzaSyChggobXMt-u7aYNGyBfOU1-x5OaDsnKKk';
-//   const restaurantSearchUrl = url + location + radius + type + key;
-//   let restaurantList = [];
-
-//   // Fetch with above data
-//   // Fetch with above data
-//   return fetch(restaurantSearchUrl)
-//   .then(response => response.json())
-//   .then(result => this.helperHandleBarSearch(result.results))
-// }
-
 helperHandleBarSearch(ArrayFromGoogle){
   
   let MarkerCreatitionArray = []
@@ -167,7 +149,7 @@ makeMarkersFromArray(){
       description={ArrayOfLocations[i].description}
       />);
     }
-    this.ArrayOfMarker = this.arrayMarker;
+    ArrayOfMarker = arrayMarker;
     return arrayMarker;
 }
 

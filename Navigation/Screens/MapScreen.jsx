@@ -47,13 +47,13 @@ const MapScreen = (props) =>{
 
   //setMarkers(s.barSearch(37.78825,-122.4324));
 
-  /*  uncomment this 
+  //  uncomment this 
   React.useEffect(() => {
     //setMarkers
     (s.barSearch(37.78825,-122.4324));
   }, []);
 
-
+/*
   Line 75 in view:
   {/* <Button title = 'Update State'  onPress={props.onClickHandler}></Button> }*/
   
@@ -69,7 +69,7 @@ const MapScreen = (props) =>{
 
   const onClickHandler = () => {
     console.log("We are updating the map");
-    //setMarkers(s.getArrayOfMarkers());
+    setMarkers(s.getArrayOfMarkers());
   }
 
   const [mapRegion, setMapState] = useState(
@@ -87,7 +87,7 @@ const MapScreen = (props) =>{
  style={styles.map}       
  region={mapRegion}       
 >
-{/* {markers2} */}
+{markers2}
 </MapView> 
 </View>
  ); 
