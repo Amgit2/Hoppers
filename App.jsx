@@ -87,11 +87,8 @@ const App = () =>{
       setScreensState(<View style={styles.container}><Favorites/></View>);
     }
   }
+  
   return(<View style={styles.container}>   
-      <View>
-            <Button title = 'Profile'  onPress={() => routeHandler('Profile') }></Button>
-            <Button title = 'Map'  onPress={() => routeHandler('Map')}></Button>
-            <Button title = 'Favorites'  onPress={() => routeHandler('Favorites')}></Button>
       
        {navbar}
       <View>
