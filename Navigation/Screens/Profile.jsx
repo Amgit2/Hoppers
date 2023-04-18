@@ -21,27 +21,25 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App = (props) =>{
+const Profile = (props) =>{
 
   
 
   return(
   <View style={styles.container}>
-      
-      <h1>"Hello, I'm Profile"</h1>
-     
+      <Button title = 'Hello, Im Profile'></Button>     
    </View>)
 }
 
 
- export default App;
+ export default Profile;
 
  const styles = StyleSheet.create({
   body: {
     backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent:'center',
-    flex: 1,
+    flex: 3,
   },
   map: {
     width:'100%',

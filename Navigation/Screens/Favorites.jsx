@@ -21,22 +21,20 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import MapScreen from './Navigation/Screens/MapScreen';
-
-const App = (props) =>{
+const Favorites = (props) =>{
 
   
 
   return(
   <View style={styles.container}>
       
-      <h1>"Hello, I'm Favoites"</h1>
+      <Button title = 'Hello, Im Favorites'></Button>   
      
    </View>)
 }
 
 
- export default App;
+ export default Favorites;
 
  const styles = StyleSheet.create({
   body: {

@@ -5,6 +5,7 @@ import {
   ScrollView,
   StatusBar,
   StyleSheet,
+  FlatList,
   Text,
   Button,
   useColorScheme,
@@ -45,10 +46,24 @@ const MapScreen = (props) =>{
   console.log("THIS IS IT FINAL");
 
   //setMarkers(s.barSearch(37.78825,-122.4324));
+
+  /*  uncomment this 
   React.useEffect(() => {
     //setMarkers
     (s.barSearch(37.78825,-122.4324));
   }, []);
+
+
+  Line 75 in view:
+  {/* <Button title = 'Update State'  onPress={props.onClickHandler}></Button> }*/
+  
+//  <MapView
+//  provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+ // style={styles.map}       
+//  region={mapRegion}       
+//>
+// {/* {markers2} */}
+//</MapView>  
 
   console.log("THIS IS IT FINAL");
 
@@ -64,18 +79,13 @@ const MapScreen = (props) =>{
   );
 
   return (
-    <View style={styles.container}>
-      <Button title = 'Update State'  onPress={props.onClickHandler}></Button>
      <MapView
-       provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-       style={styles.map}       
-       region={mapRegion}
-       
-     >
-      {markers2}
-     </MapView>
-     
-   </View>
+ provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+ style={styles.map}       
+ region={mapRegion}       
+>
+{/* {markers2} */}
+</MapView> 
  ); 
 }
 
