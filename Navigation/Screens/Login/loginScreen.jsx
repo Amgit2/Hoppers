@@ -21,13 +21,15 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import { getScreen } from '../../../App';
+
 const Login = (props) =>{
 
-  
+  //let a = new getScreen();
 
   return(
-  <View style={styles.container}>
-      <Button title = 'Hello, Im Profile'></Button>     
+  <View style={styles.body}>
+      <Button title = 'Hello! Click me to log in, or dont; I dont care :)' onPress={() => getScreen('Favorites')}></Button>     
    </View>)
 }
 
@@ -39,7 +41,9 @@ const Login = (props) =>{
     backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent:'center',
-    flex: 3,
+    //flex: 1,
+    width:'100%',
+    height:'100%'
   },
   map: {
     width:'100%',

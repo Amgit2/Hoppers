@@ -26,7 +26,7 @@ const Favorites = (props) =>{
   
 
   return(
-  <View style={styles.container}>
+  <View style={styles.button}>
       
       <Button title = 'Hello, Im Favorites'></Button>   
      
@@ -42,6 +42,14 @@ const Favorites = (props) =>{
     alignItems: 'center',
     justifyContent:'center',
     flex: 1,
+  },
+  button: {
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent:'center',
+    //flex: 1,
+    width:'100%',
+    height:'100%'
   },
   map: {
     width:'100%',

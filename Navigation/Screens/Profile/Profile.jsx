@@ -26,7 +26,7 @@ const Profile = (props) =>{
   
 
   return(
-  <View style={styles.container}>
+  <View style={styles.button}>
       <Button title = 'Hello, Im Profile'></Button>     
    </View>)
 }
@@ -40,6 +40,14 @@ const Profile = (props) =>{
     alignItems: 'center',
     justifyContent:'center',
     flex: 3,
+  },
+  button: {
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent:'center',
+    //flex: 1,
+    width:'100%',
+    height:'100%'
   },
   map: {
     width:'100%',

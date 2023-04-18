@@ -25,6 +25,7 @@ import MapScreen from './Navigation/Screens/Map/MapScreen';
 import Navigation from './Navigation/Navigation';
 import Profile from './Navigation/Screens/Profile/Profile';
 import Favorites  from './Navigation/Screens/Favorites/FavoritesScreen';
+import Login from './Navigation/Screens/Login/loginScreen';
 
 /*
 line 45
@@ -56,14 +57,25 @@ const App = () =>{
   */
   let [screensState, setScreensState] = useState(
     <View style={styles.container}>
-      <Favorites
+      <Login
       //onPress={props.PropsWithChildren}
       //onPress ={onClickHandler}
       />
   </View>
   );
   
+  let [navbar, setNavBar] = useState(
+    <View>      
+    </View>
+  ) 
   routeHandler = (route) => {
+
+    setNavBar(<View>
+      <Button title = 'Profile'  onPress={() => routeHandler('Profile') }></Button>
+      <Button title = 'Map'  onPress={() => routeHandler('Map')}></Button>
+      <Button title = 'Favorites'  onPress={() => routeHandler('Favorites')}></Button>
+</View>);
+
     if(route == 'Profile'){
       console.log('here from Profile'+ route)
       setScreensState(<View style={styles.container}><Profile/></View>);
@@ -75,15 +87,13 @@ const App = () =>{
       setScreensState(<View style={styles.container}><Favorites/></View>);
     }
   }
-
-
   return(<View style={styles.container}>   
       <View>
             <Button title = 'Profile'  onPress={() => routeHandler('Profile') }></Button>
             <Button title = 'Map'  onPress={() => routeHandler('Map')}></Button>
             <Button title = 'Favorites'  onPress={() => routeHandler('Favorites')}></Button>
-      </View>
-       
+      
+       {navbar}
       <View>
             {screensState}
       </View>
@@ -94,9 +104,12 @@ const App = () =>{
    </View>)
 }
 
-
  export default App;
 
+
+ export function getScreen(route){
+  routeHandler(route);
+ }
  const styles = StyleSheet.create({
   body: {
     backgroundColor: '#ffffff',
