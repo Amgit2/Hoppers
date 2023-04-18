@@ -68,7 +68,8 @@ const MapScreen = (props) =>{
   console.log("THIS IS IT FINAL");
 
   const onClickHandler = () => {
-    setMarkers(s.getArrayOfMarkers());
+    console.log("We are updating the map");
+    //setMarkers(s.getArrayOfMarkers());
   }
 
   const [mapRegion, setMapState] = useState(
@@ -79,6 +80,8 @@ const MapScreen = (props) =>{
   );
 
   return (
+    <View>
+    <Button title = 'Update State'  onPress={() => onClickHandler()}></Button>
      <MapView
  provider={PROVIDER_GOOGLE} // remove if not using Google Maps
  style={styles.map}       
@@ -86,6 +89,7 @@ const MapScreen = (props) =>{
 >
 {/* {markers2} */}
 </MapView> 
+</View>
  ); 
 }
 
