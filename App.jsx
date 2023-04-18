@@ -21,10 +21,10 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import MapScreen from './Navigation/Screens/MapScreen';
+import MapScreen from './Navigation/Screens/Map/MapScreen';
 import Navigation from './Navigation/Navigation';
-import Profile from './Navigation/Screens/Profile';
-import Favorites  from './Navigation/Screens/Favorites';
+import Profile from './Navigation/Screens/Profile/Profile';
+import Favorites  from './Navigation/Screens/Favorites/FavoritesScreen';
 
 /*
 line 45

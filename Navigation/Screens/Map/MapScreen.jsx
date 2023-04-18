@@ -23,7 +23,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import Services from '../../Service/Service';
+import Services from '../../../Service/Service';
 
 const MapScreen = (props) =>{
 
