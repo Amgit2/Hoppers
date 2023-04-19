@@ -21,67 +21,92 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import Services from './Service/Service';
+import MapScreen from './Navigation/Screens/Map/MapScreen';
+import Navigation from './Navigation/Navigation';
+import Profile from './Navigation/Screens/Profile/Profile';
+import Favorites  from './Navigation/Screens/Favorites/FavoritesScreen';
+import Login from './Navigation/Screens/Login/loginScreen';
 
+/*
+line 45
+<MapScreen
+      onPress={props.PropsWithChildren}
+      //onPress ={onClickHandler}
+      />
+
+
+*/
 const App = () =>{
 
- 
-      var minute = new Date().getMinutes();
-      var second = new Date().getSeconds();
-      var hour = new Date().getHours();
 
-
-  console.log("Run: " + hour + ":" + minute + ":" + second);//format: d-m-y;
-
-  let initialRegion = {latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,}
-
-  let s = new Services;
-  let markerArray = s.makeMarkersFromArray();
-  
-  console.log("THIS IS IT FINAL");
-
-  //setMarkers(s.barSearch(37.78825,-122.4324));
-  React.useEffect(() => {
-    //setMarkers
-    (s.barSearch(37.78825,-122.4324));
-  }, []);
-
-  console.log("THIS IS IT FINAL");
-
-  const onClickHandler = () => {
-    setMarkers(s.getArrayOfMarkers());
+  const onClickHandler = (path) => {
+    console.log("hi from " + path);
+    //setMarkers(s.getArrayOfMarkers());
   }
 
-  const [mapRegion, setMapState] = useState(
-    initialRegion
-  );
-  const [markers2, setMarkers] = useState(
-    markerArray
-  );
 
-  return (
+  /*
+  
+    setScreensState(
+          <View style={styles.container}>
+        <Profile/>
+        </View>
+        )    
+
+
+  */
+  let [screensState, setScreensState] = useState(
     <View style={styles.container}>
-      <Button title = 'Update State'  onPress={onClickHandler}></Button>
-     <MapView
-       provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-       style={styles.map}       
-       region={mapRegion}
-       
-     >
-      {markers2}
-     </MapView>
-     
-   </View>
- );
- 
-}
+      <Login
+      //onPress={props.PropsWithChildren}
+      //onPress ={onClickHandler}
+      />
+  </View>
+  );
+  
+  let [navbar, setNavBar] = useState(
+    <View>      
+    </View>
+  ) 
+  routeHandler = (route) => {
 
+    setNavBar(<View>
+      <Button title = 'Profile'  onPress={() => routeHandler('Profile') }></Button>
+      <Button title = 'Map'  onPress={() => routeHandler('Map')}></Button>
+      <Button title = 'Favorites'  onPress={() => routeHandler('Favorites')}></Button>
+</View>);
+
+    if(route == 'Profile'){
+      console.log('here from Profile'+ route)
+      setScreensState(<View style={styles.container}><Profile/></View>);
+    } else if(route == 'Map') {
+      console.log('here from MapScreen'+ route)
+      setScreensState(<View style={styles.container}><MapScreen/></View>);
+    } else if(route == 'Favorites') {
+      console.log('here from Favorites'+ route)
+      setScreensState(<View style={styles.container}><Favorites/></View>);
+    }
+  }
+  
+  return(<View style={styles.container}>   
+      
+       {navbar}
+      <View>
+            {screensState}
+      </View>
+    {/* <Navigation/> */}
+    {/* <Button title = 'Profile'></Button>
+    </Navigation> */}
+    
+   </View>)
+}
 
  export default App;
 
+
+ export function getScreen(route){
+  routeHandler(route);
+ }
  const styles = StyleSheet.create({
   body: {
     backgroundColor: '#ffffff',
@@ -90,7 +115,7 @@ const App = () =>{
     flex: 1,
   },
   map: {
-    width:'100%',
-    height:'100%'
+    width:'90%',
+    height:'90%'
   },
  });
