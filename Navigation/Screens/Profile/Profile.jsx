@@ -9,6 +9,7 @@ import {
   Button,
   useColorScheme,
   View,
+  Image,
 } from 'react-native';
 // Import Map and Marker
 import MapView, {Marker, enableLatestRenderer, PROVIDER_GOOGLE } from 'react-native-maps';
@@ -23,11 +24,36 @@ import {
 
 const Profile = (props) =>{
 
+  const [profileScreen, setProfileScreen] = useState(
+    ""
+  );
   
+  initialJson = {
+    userName : 'TestUserProfile',
+    pciture: '',
+    rating: 3,
+    points: 100,
+    temp: ''
+};
+
+  const [userName, setUserName] = useState(
+    'TestUserProfile'
+  );
+  
+  function setJsonVariable(variable, value){
+    if(variable == 'userName'){
+      console.log(value);
+      setUserName(value)
+    }
+  }
 
   return(
   <View style={styles.button}>
-      <Button title = 'Hello, Im Profile'></Button>     
+    <View style={styles.body}>
+      <Image source={require('../../../Img/stool.png')} />
+      <Text>"UserName : "  + {userName}</Text>
+      <Button title = 'Hello, Im Profile' onPress={() => setJsonVariable('userName', 'new name bla')}></Button>
+    </View>     
    </View>)
 }
 
