@@ -11,19 +11,24 @@ import {
   FlatList,
   View,
 } from 'react-native';
+
+// import from app
 import {NavigationContainer} from '@react-navigation/native';
+import { setScreen } from '../App';
 
-const onClickHandler = (path) => {
-    console.log("hi from " + path);
-    //setMarkers(s.getArrayOfMarkers());
-  }
+// Call this function to set the screen
+// input -> the name of the screen
+ const onClickHandler = (path) => {
+   setScreen(path);
+}
 
-function Navigation(){
+// Holds the navigation elements
+  const Navigation = () => {
     return (
       <View>
-            <Button title = 'Profile'  onPress={onClickHandler('Profile')}></Button>
-            <Button title = 'Map'  onPress={onClickHandler('Map')}></Button>
-            <Button title = 'Favorites'  onPress={onClickHandler('Favorites')}></Button>
+            <Button title = 'Profile'  onPress={() => onClickHandler('Profile')}></Button>
+            <Button title = 'Map 2'  onPress={() => onClickHandler('Map')}></Button>
+            <Button title = 'Favorites 2'  onPress={() => onClickHandler('Favorites')}></Button>
       </View>
     )
 }

@@ -21,7 +21,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { getScreen } from '../../../App';
+import { setScreen } from '../../../App';
 
 const Login = (props) =>{
 
@@ -29,7 +29,7 @@ const Login = (props) =>{
 
   return(
   <View style={styles.body}>
-      <Button title = 'Hello! Click me to log in, or dont; I dont care :)' onPress={() => getScreen('Favorites')}></Button>     
+      <Button title = 'Hello! Click me to log in, or dont; I dont care :)' onPress={() => setScreen('Favorites')}></Button>     
    </View>)
 }
 

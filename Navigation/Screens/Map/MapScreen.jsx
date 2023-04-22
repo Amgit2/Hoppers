@@ -23,6 +23,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+// imports from App
 import Services from '../../../Service/Service';
 
 const MapScreen = (props) =>{
@@ -47,23 +48,11 @@ const MapScreen = (props) =>{
 
   //setMarkers(s.barSearch(37.78825,-122.4324));
 
-  //  uncomment this 
+
   React.useEffect(() => {
     //setMarkers
     (s.barSearch(37.78825,-122.4324));
   }, []);
-
-/*
-  Line 75 in view:
-  {/* <Button title = 'Update State'  onPress={props.onClickHandler}></Button> }*/
-  
-//  <MapView
-//  provider={PROVIDER_GOOGLE} // remove if not using Google Maps
- // style={styles.map}       
-//  region={mapRegion}       
-//>
-// {/* {markers2} */}
-//</MapView>  
 
   console.log("THIS IS IT FINAL");
 
@@ -71,10 +60,13 @@ const MapScreen = (props) =>{
     console.log("We are updating the map");
     setMarkers(s.getArrayOfMarkers());
   }
-
+  
+  // Sets and Updates the current map
   const [mapRegion, setMapState] = useState(
     initialRegion
   );
+
+  // Sets and Updates the Markers
   const [markers2, setMarkers] = useState(
     markerArray
   );
