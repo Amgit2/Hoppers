@@ -63,18 +63,22 @@ const App = () =>{
       />
   </View>
   );
-  
+  /* <Button title = 'Profile'  onPress={() => routeHandler('Profile') }></Button>
+      <Button title = 'Map'  onPress={() => routeHandler('Map')}></Button>
+      <Button title = 'Favorites'  onPress={() => routeHandler('Favorites')}></Button> */
   let [navbar, setNavBar] = useState(
     <View>      
     </View>
   ) 
   routeHandler = (route) => {
 
-    setNavBar(<View>
-      <Button title = 'Profile'  onPress={() => routeHandler('Profile') }></Button>
+    setNavBar(<View>      
+      <Navigation/>
+      {/* <Button title = 'Profile'  onPress={() => routeHandler('Profile') }></Button>
       <Button title = 'Map'  onPress={() => routeHandler('Map')}></Button>
       <Button title = 'Favorites'  onPress={() => routeHandler('Favorites')}></Button>
-</View>);
+      <Button title = 'SetNavBar'  onPress={() => setNavBar(<Navigation/>)}></Button> */}
+      </View>);
 
     if(route == 'Profile'){
       console.log('here from Profile'+ route)
@@ -104,9 +108,10 @@ const App = () =>{
  export default App;
 
 
- export function getScreen(route){
+ export function setScreen(route){
   routeHandler(route);
  }
+
  const styles = StyleSheet.create({
   body: {
     backgroundColor: '#ffffff',
