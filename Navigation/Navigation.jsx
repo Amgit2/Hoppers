@@ -16,13 +16,13 @@ import {
 import {NavigationContainer} from '@react-navigation/native';
 import { setScreen } from '../App';
 
-
+// Call this function to set the screen
+// input -> the name of the screen
  const onClickHandler = (path) => {
    setScreen(path);
-//     //setMarkers(s.getArrayOfMarkers());
 }
 
-//function Navigation(){
+// Holds the navigation elements
   const Navigation = () => {
     return (
       <View>

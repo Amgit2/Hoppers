@@ -27,15 +27,8 @@ import Profile from './Navigation/Screens/Profile/Profile';
 import Favorites  from './Navigation/Screens/Favorites/FavoritesScreen';
 import Login from './Navigation/Screens/Login/loginScreen';
 
-/*
-line 45
-<MapScreen
-      onPress={props.PropsWithChildren}
-      //onPress ={onClickHandler}
-      />
 
-
-*/
+// Main function
 const App = () =>{
 
 
@@ -55,29 +48,29 @@ const App = () =>{
 
 
   */
+
+  // Renders the Current Screen
   let [screensState, setScreensState] = useState(
     <View style={styles.container}>
       <Login
-      //onPress={props.PropsWithChildren}
-      //onPress ={onClickHandler}
       />
   </View>
   );
-  /* <Button title = 'Profile'  onPress={() => routeHandler('Profile') }></Button>
-      <Button title = 'Map'  onPress={() => routeHandler('Map')}></Button>
-      <Button title = 'Favorites'  onPress={() => routeHandler('Favorites')}></Button> */
+
+  // Renders the Navigation Bar
   let [navbar, setNavBar] = useState(
     <View>      
     </View>
-  ) 
+  )
+  
+  
+  // Function handles the route change
+  // Input will be the screen being called
+  // Will set the new screen 
   routeHandler = (route) => {
 
     setNavBar(<View>      
       <Navigation/>
-      {/* <Button title = 'Profile'  onPress={() => routeHandler('Profile') }></Button>
-      <Button title = 'Map'  onPress={() => routeHandler('Map')}></Button>
-      <Button title = 'Favorites'  onPress={() => routeHandler('Favorites')}></Button>
-      <Button title = 'SetNavBar'  onPress={() => setNavBar(<Navigation/>)}></Button> */}
       </View>);
 
     if(route == 'Profile'){
@@ -92,22 +85,18 @@ const App = () =>{
     }
   }
   
-  return(<View style={styles.container}>   
+  return(<View style={styles.container}> 
       
        {navbar}
       <View>
             {screensState}
-      </View>
-    {/* <Navigation/> */}
-    {/* <Button title = 'Profile'></Button>
-    </Navigation> */}
-    
+      </View>    
    </View>)
 }
 
  export default App;
 
-
+// The function that should be called when another screen wants to change the current screen
  export function setScreen(route){
   routeHandler(route);
  }
