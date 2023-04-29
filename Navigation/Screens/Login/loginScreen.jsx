@@ -23,13 +23,34 @@ import {
 
 import { setScreen } from '../../../App';
 
+import CustomInput from '../../../Components/Custominput';
+
+
+
 const Login = (props) =>{
 
-  //let a = new getScreen();
+  //let a = new getScreen(); style={styles.body}
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+
 
   return(
-  <View style={styles.body}>
-      <Button title = 'Hello! Click me to log in, or dont; I dont care :)' onPress={() => setScreen('Favorites')}></Button>     
+  <View >
+    
+      <View>
+        <Button title = 'Hello! Click me to log in, or dont; I dont care :)' onPress={() => setScreen('Favorites')}></Button> 
+        <CustomInput 
+          placeholder="Username or Email"
+          value = {username} 
+          setValue={setUsername}
+        />
+        <CustomInput 
+          placeholder="Password"
+          value = {password} 
+          setValue={setPassword}
+        />
+      </View>
+      
    </View>)
 }
 

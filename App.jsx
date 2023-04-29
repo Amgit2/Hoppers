@@ -27,7 +27,6 @@ import Profile from './Navigation/Screens/Profile/Profile';
 import Favorites  from './Navigation/Screens/Favorites/FavoritesScreen';
 import Login from './Navigation/Screens/Login/loginScreen';
 
-
 // Main function
 const App = () =>{
 
@@ -102,6 +101,10 @@ const App = () =>{
  }
 
  const styles = StyleSheet.create({
+  root: {
+    flex: 1, 
+    backgroundColor: '#F9FBFC'
+  },
   body: {
     backgroundColor: '#ffffff',
     alignItems: 'center',
