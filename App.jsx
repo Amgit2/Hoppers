@@ -26,7 +26,8 @@ import Navigation from './Navigation/Navigation';
 import Profile from './Navigation/Screens/Profile/Profile';
 import Favorites  from './Navigation/Screens/Favorites/FavoritesScreen';
 import Login from './Navigation/Screens/Login/loginScreen';
-
+import SignUpPage from './Navigation/Screens/Login/signUpScreen';
+import Confirmation from './Navigation/Screens/Login/confirmation';
 // Main function
 const App = () =>{
 
@@ -75,12 +76,30 @@ const App = () =>{
     if(route == 'Profile'){
       console.log('here from Profile'+ route)
       setScreensState(<View style={styles.container}><Profile/></View>);
+
     } else if(route == 'Map') {
       console.log('here from MapScreen'+ route)
       setScreensState(<View style={styles.container}><MapScreen/></View>);
+
     } else if(route == 'Favorites') {
       console.log('here from Favorites'+ route)
       setScreensState(<View style={styles.container}><Favorites/></View>);
+
+    } else if(route == 'Login') {
+      console.log('here from Login'+ route)
+      setScreensState(<View style={styles.container}><Login/></View>);
+    
+    } else if(route == 'SignUp') {
+      console.log('here from SignUp'+ route)
+      setScreensState(<View style={styles.container}><SignUpPage/></View>);
+
+    } else if(route == 'Confirmation') {
+      console.log('here from confirmation'+ route)
+      setScreensState(<View style={styles.container}><Confirmation/></View>);
+    
+    // } else if(route == 'ForgotPassword') {
+    //   console.log('here from ForgotPassword'+ route)
+    //   setScreensState(<View style={styles.container}><ForgotPassword/></View>);
     }
   }
   

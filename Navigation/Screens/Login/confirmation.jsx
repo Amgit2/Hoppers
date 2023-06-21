@@ -27,7 +27,7 @@ import CustomInput from '../../../Components/Custominput';
 
 
 
-const Login = (props) =>{
+const Confirmation = (props) =>{
 
   //let a = new getScreen(); style={styles.body}
   const [username, setUsername] = useState('')
@@ -38,27 +38,25 @@ const Login = (props) =>{
   <View >
     
       <View>
+        <Text></Text>
+        <Button title = 'Enter your email' onPress={() => setScreen('Favorites')}></Button> 
         <CustomInput 
-          placeholder="Username or Email"
+          placeholder="Enter your email"
           value = {username} 
           setValue={setUsername}
         />
         <CustomInput 
-          placeholder="Password"
+          placeholder="Enter your a password"
           value = {password} 
           setValue={setPassword}
         />
-        <Button title = 'Login' onPress={() => setScreen('Favorites')}></Button>         
-        <Button title = 'Sign Up' onPress={() => setScreen('SignUp')}></Button> 
-        <Button title = 'Forgot Password' onPress={() => setScreen('ForgotPassword')}></Button> 
-        
       </View>
       
    </View>)
 }
 
 
- export default Login;
+ export default Confirmation;
 
  const styles = StyleSheet.create({
   body: {
