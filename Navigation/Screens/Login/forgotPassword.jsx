@@ -27,7 +27,7 @@ import CustomInput from '../../../Components/Custominput';
 
 
 
-const SignUpPage = (props) =>{
+const forgetPasswordPage = (props) =>{
 
   //let a = new getScreen(); style={styles.body}
   const [username, setUsername] = useState('');
@@ -36,22 +36,20 @@ const SignUpPage = (props) =>{
   const [email, setEmail] = useState('');
 
 
-  // Functions
-  const SignUp = () => {
-    console.log("Sign Up")
+  const resetPassword = () => {
+    console.log("Resting Password")
   }
-
   return(
   <View >
     
       <View style={styles.mainContainer}>
-        <Text style={styles.title}> Lets sign you up! </Text>
+        <Text style={styles.title}> Lets reset your password! </Text>
         
-        <CustomInput 
+        {/* <CustomInput 
           placeholder="Enter your a username"
           value = {username} 
           setValue={setUsername}
-        />       
+        />        */}
         <CustomInput 
           placeholder="Enter your email"
           value = {email} 
@@ -63,20 +61,20 @@ const SignUpPage = (props) =>{
           setValue={setPassword}
         />
 
-        <CustomInput 
+        {/* <CustomInput 
           placeholder="Enter your a password"
           value = {passwordRepeat} 
           setValue={setPasswordRepeat}
-        />
+        /> */}
         <View style={styles.Buttons}></View>
-        <Button title = 'Sign Up' onPress={() => SignUp()}></Button> 
+        <Button title = 'Login' onPress={() => resetPassword()}></Button> 
       </View>
       
    </View>)
 }
 
 
- export default SignUpPage;
+ export default forgetPasswordPage;
 
  const styles = StyleSheet.create({
   body: {

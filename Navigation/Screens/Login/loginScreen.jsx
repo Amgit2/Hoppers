@@ -26,6 +26,11 @@ import { setScreen } from '../../../App';
 import CustomInput from '../../../Components/Custominput';
 
 
+        {/* <View style={styles.mainContainer}>
+          <CustomInput
+            text="facebook"
+            onPress={setScreen('ForgotPassword')}/>
+        </View>  */}
 
 const Login = (props) =>{
 
@@ -34,10 +39,30 @@ const Login = (props) =>{
   const [password, setPassword] = useState('')
 
 
+  // Functions  //
+
+  // Sign on Functions
+  const onSignInFacebook = () => {
+    console.log("facebook")
+  }
+
+  const onSignInGoogle = () => {
+    console.log("Google")
+  }
+
+  const onSignInApple = () => {
+    console.log("Apple")
+  }
+
+  const LoginWithUserName = () => {
+    console.log("Log in")
+  }
+
   return(
   <View >
     
-      <View>
+      <View style={styles.mainContainer}>
+        <View style={styles.UserNameContainer}> 
         <CustomInput 
           placeholder="Username or Email"
           value = {username} 
@@ -48,10 +73,17 @@ const Login = (props) =>{
           value = {password} 
           setValue={setPassword}
         />
-        <Button title = 'Login' onPress={() => setScreen('Favorites')}></Button>         
-        <Button title = 'Sign Up' onPress={() => setScreen('SignUp')}></Button> 
-        <Button title = 'Forgot Password' onPress={() => setScreen('ForgotPassword')}></Button> 
-        
+
+          <Button title = 'Login' onPress={() => LoginWithUserName()}></Button>         
+          <Button title = 'Sign Up' onPress={() => setScreen('SignUp')}></Button> 
+          <Button title = 'Forgot Password' onPress={() => setScreen('ForgotPassword')}></Button>     
+        </View>
+
+        <View style={styles.SiteLogins}>
+        <Button title = 'Facebook' onPress={() => onSignInFacebook()}></Button>
+        <Button title = 'Google' onPress={() => onSignInGoogle()}></Button>
+        <Button title = 'Apple' onPress={() => onSignInApple()}></Button>
+        </View>
       </View>
       
    </View>)
@@ -65,12 +97,39 @@ const Login = (props) =>{
     backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent:'center',
-    //flex: 1,
+    //flex: 1,r
     width:'100%',
     height:'100%'
   },
   map: {
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent:'center',
     width:'100%',
     height:'100%'
   },
+  mainContainer: {
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent:'center',
+    width:'100%',
+    height:'100%'
+    
+  },
+  SiteLogins: {
+    backgroundColor: '#ffffff',
+    //alignItems: 'center',
+    justifyContent:'center',
+    width:'100%',
+    paddingTop: 50
+    //height:'100%'
+  },
+  UserNameContainer: {
+    backgroundColor: '#ffffff',
+    //alignItems: 'center',
+    //justifyContent:'center',
+    width:'100%',
+    //height:'100%'
+  }
+
  });

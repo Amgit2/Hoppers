@@ -28,6 +28,7 @@ import Favorites  from './Navigation/Screens/Favorites/FavoritesScreen';
 import Login from './Navigation/Screens/Login/loginScreen';
 import SignUpPage from './Navigation/Screens/Login/signUpScreen';
 import Confirmation from './Navigation/Screens/Login/confirmation';
+import ForgotPassword from './Navigation/Screens/Login/forgotPassword';
 // Main function
 const App = () =>{
 
@@ -61,17 +62,28 @@ const App = () =>{
   let [navbar, setNavBar] = useState(
     <View>      
     </View>
-  )
+  );
+
+  let [signedIn, setSignedIn] = useState(false);
   
   
   // Function handles the route change
   // Input will be the screen being called
   // Will set the new screen 
   routeHandler = (route) => {
+    ///let ArrayContainingPagesNotAllowedNavigation = ['SignUp','Confirmation','Login'];
 
+    if(route == 'SignUp' || route == 'Login' || route == 'Confirmation' || route == 'ForgotPassword'){
+     setSignedIn = false;
+    } else {
+      setSignedIn = true;
+    }
+
+    if(signedIn){
     setNavBar(<View>      
       <Navigation/>
       </View>);
+    };
 
     if(route == 'Profile'){
       console.log('here from Profile'+ route)
@@ -97,9 +109,9 @@ const App = () =>{
       console.log('here from confirmation'+ route)
       setScreensState(<View style={styles.container}><Confirmation/></View>);
     
-    // } else if(route == 'ForgotPassword') {
-    //   console.log('here from ForgotPassword'+ route)
-    //   setScreensState(<View style={styles.container}><ForgotPassword/></View>);
+   } else if(route == 'ForgotPassword') {
+       console.log('here from ForgotPassword'+ route)
+       setScreensState(<View style={styles.container}><ForgotPassword/></View>);
     }
   }
   
